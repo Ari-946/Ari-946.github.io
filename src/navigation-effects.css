@@ -1,0 +1,104 @@
+/* 首屏透明，进入第二屏后固定为磨砂玻璃导航。 */
+.fan-site .fan-topbar {
+  transition: width .45s cubic-bezier(.2,.7,.2,1),
+              top .45s cubic-bezier(.2,.7,.2,1),
+              height .45s cubic-bezier(.2,.7,.2,1),
+              padding .45s cubic-bezier(.2,.7,.2,1),
+              background .35s ease,
+              border-color .35s ease,
+              box-shadow .35s ease;
+}
+
+.fan-site .fan-topbar.is-floating {
+  position: fixed;
+  top: 14px;
+  width: min(1640px, calc(100vw - 48px));
+  height: 72px;
+  padding: 0 24px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 18px;
+  background: linear-gradient(110deg, rgba(8,8,10,.76), rgba(27,7,10,.64));
+  box-shadow: 0 16px 55px rgba(0,0,0,.4), inset 0 1px rgba(255,255,255,.08);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  backdrop-filter: blur(22px) saturate(145%);
+  animation: fanNavEnter .55s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.fan-site .fan-nav a {
+  position: relative;
+  padding: 10px 2px;
+  transition: color .25s ease, transform .25s ease, text-shadow .25s ease;
+}
+.fan-site .fan-nav a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 3px;
+  height: 1px;
+  background: var(--r);
+  box-shadow: 0 0 12px var(--r);
+  transition: left .3s ease, right .3s ease;
+}
+.fan-site .fan-nav a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  text-shadow: 0 0 18px rgba(242,45,61,.65);
+}
+.fan-site .fan-nav a:hover::after { left: 0; right: 0; }
+
+.fan-site .fan-live-link,
+.fan-site .fan-hero-bottom a,
+.fan-site .fan-footer-button,
+.fan-site .fan-room-line button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, border-color .3s ease, color .3s ease, background .3s ease;
+}
+.fan-site .fan-live-link::before,
+.fan-site .fan-room-line button::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 25%, rgba(255,255,255,.36) 50%, transparent 75%);
+  transform: translateX(-130%);
+  transition: transform .55s ease;
+}
+.fan-site .fan-live-link:hover::before,
+.fan-site .fan-room-line button:hover::before { transform: translateX(130%); }
+.fan-site .fan-live-link:hover {
+  transform: translateY(-3px);
+  border-color: var(--r);
+  background: var(--r);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(242,45,61,.3);
+}
+.fan-site .fan-live-link svg,
+.fan-site .fan-footer-button svg { transition: transform .3s ease; }
+.fan-site .fan-live-link:hover svg,
+.fan-site .fan-footer-button:hover svg { transform: translate(4px,-4px); }
+.fan-site .fan-hero-bottom a:hover { transform: translateY(-4px); color: var(--r); border-color: var(--r); }
+.fan-site .fan-room-line button:hover { transform: translateY(-3px); box-shadow: 0 9px 25px rgba(242,45,61,.25); }
+.fan-site .fan-footer-button:hover { box-shadow: 0 20px 55px rgba(0,0,0,.35), 0 0 0 9px rgba(255,255,255,.09); }
+
+@keyframes fanNavEnter {
+  from { opacity: 0; transform: translate(-50%,-18px) scale(.98); }
+  to { opacity: 1; transform: translate(-50%,0) scale(1); }
+}
+
+@media (max-width: 760px) {
+  .fan-site .fan-topbar.is-floating {
+    top: 8px;
+    width: calc(100vw - 20px);
+    height: 64px;
+    padding: 0 17px;
+    border-radius: 15px;
+  }
+  .fan-site .fan-topbar.is-floating .fan-nav { top: 72px; border-radius: 14px; box-shadow: 0 18px 45px rgba(0,0,0,.45); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fan-site .fan-topbar.is-floating { animation: none; }
+}

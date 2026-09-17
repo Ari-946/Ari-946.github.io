@@ -1,0 +1,44 @@
+/* PixelSnow 固定在视口中。视频 Hero 在其上方完全遮挡，从第二屏开始透出。 */
+.fan-site { position: relative; isolation: isolate; }
+.fan-site .fan-pixel-snow {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  opacity: .42;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(242,45,61,.12), transparent 34%),
+    radial-gradient(circle at 86% 72%, rgba(107,9,23,.15), transparent 38%),
+    #070707;
+}
+.fan-site .fan-pixel-snow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(7,7,7,.32), transparent 45%, rgba(7,7,7,.18));
+}
+
+.fan-site .fan-hero { z-index: 2; }
+.fan-site .fan-about,
+.fan-site .fan-gallery,
+.fan-site .fan-memes,
+.fan-site .fan-cards,
+.fan-site .fan-moments,
+.fan-site .fan-footer {
+  position: relative;
+  z-index: 1;
+}
+.fan-site .fan-about { background: linear-gradient(rgba(7,7,7,.76),rgba(7,7,7,.7)); }
+.fan-site .fan-gallery { background: linear-gradient(rgba(8,8,8,.8),rgba(8,8,8,.72)); }
+.fan-site .fan-memes { background: linear-gradient(rgba(13,13,13,.82),rgba(10,10,10,.75)); }
+.fan-site .fan-cards { background: radial-gradient(circle at 50% 58%,rgba(129,6,18,.18),transparent 38%),rgba(7,7,7,.72); }
+.fan-site .fan-moments { background: linear-gradient(rgba(10,10,10,.78),rgba(6,6,6,.76)); }
+.fan-site .fan-footer { background: radial-gradient(circle at 72% 40%,rgba(242,45,61,.9),rgba(113,7,16,.85) 24%,rgba(19,1,4,.84) 56%,rgba(8,8,8,.9) 80%); }
+
+@media (max-width:760px) {
+  .fan-site .fan-pixel-snow { opacity: .3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fan-site .fan-pixel-snow { opacity: .2; }
+}

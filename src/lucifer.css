@@ -1,0 +1,37 @@
+/* 首页视频位于人物名称之后；深色遮罩确保动态画面不干扰文字阅读。 */
+.fan-site .fan-hero-photo { display: none; }
+.fan-site .fan-hero-video {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.82) brightness(.78);
+  pointer-events: none;
+}
+.fan-site .fan-hero-shade {
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(4, 4, 5, .88), rgba(5, 5, 6, .55) 55%, rgba(20, 2, 5, .24)),
+              linear-gradient(0deg, #070707, transparent 38%);
+}
+.fan-site .fan-hero-grid { z-index: 1; pointer-events: none; }
+.fan-site .fan-hero h1 {
+  font-size: clamp(84px, 10.4vw, 190px);
+  line-height: 1.08;
+  letter-spacing: -.085em;
+  white-space: nowrap;
+}
+.fan-site .fan-hero-role { letter-spacing: .32em; }
+.fan-site .fan-hero-bottom p { font-size: clamp(27px, 2.5vw, 43px); font-weight: 500; }
+.fan-site .fan-brand { font-size: 0; }
+.fan-site .fan-brand::before { content: '路西法'; font-size: 24px; letter-spacing: -.06em; }
+.fan-site .fan-brand span { font-size: 9px; }
+
+@media (max-width: 760px) {
+  .fan-site .fan-hero h1 { font-size: clamp(48px, 17vw, 110px); white-space: normal; }
+  .fan-site .fan-hero-video { object-position: 60% center; }
+  .fan-site .fan-hero-shade { background: linear-gradient(0deg, #070707 0%, rgba(7,7,7,.4) 62%, rgba(7,7,7,.35)); }
+  .fan-site .fan-hero-bottom p { font-size: clamp(22px, 5.2vw, 30px); }
+}

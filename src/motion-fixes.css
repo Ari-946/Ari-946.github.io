@@ -1,0 +1,37 @@
+/* 防止中文大标题被紧凑行高、遮罩或父容器裁掉。 */
+.agency-motion-enabled .fan-hero h1,
+.agency-motion-enabled .fan-about-copy h2,
+.agency-motion-enabled .fan-section-heading h2,
+.agency-motion-enabled .fan-gallery-title h2,
+.agency-motion-enabled .fan-footer h2,
+.agency-motion-enabled .fan-moment-info h3 {
+  overflow: visible;
+  padding-block: .09em .14em;
+  margin-block: -.09em -.14em;
+  clip-path: none !important;
+}
+
+.agency-motion-enabled .fan-about-copy h2 { line-height: 1.2; }
+.agency-motion-enabled .fan-section-heading h2 { line-height: .92; }
+.agency-motion-enabled .fan-gallery-title h2 { line-height: 1.02; }
+.agency-motion-enabled .fan-footer h2 { line-height: .86; }
+.agency-motion-enabled .fan-moment-info h3 { line-height: 1.22; }
+
+/* 图片保持原始尺寸；视差只允许轻微位移，不做持续放大。 */
+.agency-motion-enabled .fan-photo-cell img,
+.agency-motion-enabled .fan-meme-image img,
+.agency-motion-enabled .fan-card-photo img,
+.agency-motion-enabled .fan-moment-image img,
+.agency-motion-enabled .fan-profile-photo img {
+  scale: 1 !important;
+  transform-origin: center center;
+}
+
+/* 卡片原有 hover 缩放只保留在照片墙，并限制幅度。 */
+.agency-motion-enabled .fan-photo-cell:hover img { scale: 1.015 !important; }
+.agency-motion-enabled .fan-moment-card:hover img { scale: 1.015 !important; }
+
+@media (max-width: 760px) {
+  .agency-motion-enabled .fan-section-heading h2 { line-height: 1; }
+  .agency-motion-enabled .fan-footer h2 { line-height: .92; }
+}

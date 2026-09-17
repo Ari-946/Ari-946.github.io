@@ -1,0 +1,82 @@
+body.opening-active { overflow: hidden !important; }
+
+.agency-motion-enabled .fan-site [data-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.agency-opening {
+  position: fixed;
+  z-index: 12000;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: all;
+  color: #f4f1ed;
+}
+.agency-opening__panel {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 51%;
+  background: #050505;
+}
+.agency-opening__panel--top { top: 0; border-bottom: 1px solid rgba(242,45,61,.3); }
+.agency-opening__panel--bottom { bottom: 0; border-top: 1px solid rgba(242,45,61,.3); }
+.agency-opening__center {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: min(780px, calc(100vw - 70px));
+  transform: translate(-50%,-50%);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.agency-opening__eyebrow,
+.agency-opening__index {
+  margin: 0;
+  font: 9px 'Space Mono', monospace;
+  letter-spacing: .18em;
+  white-space: nowrap;
+}
+.agency-opening__eyebrow { color: rgba(255,255,255,.75); }
+.agency-opening__index { color: #f22d3d; }
+.agency-opening__line { height: 1px; background: linear-gradient(90deg,#f22d3d,rgba(255,255,255,.55)); }
+
+.agency-motion-enabled .fan-section-heading h2,
+.agency-motion-enabled .fan-gallery-title h2,
+.agency-motion-enabled .fan-about-copy h2,
+.agency-motion-enabled .fan-footer h2,
+.agency-motion-enabled .fan-hero h1 {
+  will-change: transform, opacity, clip-path;
+}
+.agency-motion-enabled .fan-photo-cell,
+.agency-motion-enabled .fan-meme-card,
+.agency-motion-enabled .fan-collect-card,
+.agency-motion-enabled .fan-moment-card,
+.agency-motion-enabled .fan-profile-photo,
+.agency-motion-enabled .fan-stats > div {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+.agency-motion-enabled .fan-photo-cell img,
+.agency-motion-enabled .fan-meme-image img,
+.agency-motion-enabled .fan-card-photo img,
+.agency-motion-enabled .fan-moment-image img,
+.agency-motion-enabled .fan-profile-photo img {
+  will-change: transform, clip-path;
+}
+
+@media (max-width: 760px) {
+  .agency-opening__center { grid-template-columns: 1fr; gap: 15px; }
+  .agency-opening__line { width: 100%; }
+  .agency-opening__index { justify-self: end; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agency-opening { display: none; }
+  .agency-motion-enabled .fan-site * { will-change: auto !important; }
+}

@@ -1,0 +1,25 @@
+.fan-site .fan-moment-info h3 {
+  font-size: clamp(34px, 3.55vw, 65px);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.fan-site .fan-footer-inner > p {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 34px;
+  font-size: clamp(12px, 1vw, 17px);
+  line-height: 1.35;
+  letter-spacing: .12em;
+}
+
+.fan-site .fan-footer-inner > p span {
+  color: rgba(255,255,255,.62);
+  font-size: .72em;
+  letter-spacing: .16em;
+}
+
+@media (max-width: 760px) {
+  .fan-site .fan-moment-info h3 { font-size: clamp(32px, 10vw, 48px); }
+}

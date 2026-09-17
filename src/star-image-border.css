@@ -1,0 +1,98 @@
+/* Adapted from React Bits StarBorder for image containers. */
+.fan-site .star-image-border {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.025);
+}
+
+.fan-site .star-image-border::before {
+  content: '';
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(242,45,61,.16);
+  border-radius: inherit;
+  transition: border-color .35s ease, box-shadow .35s ease;
+}
+
+.fan-site .star-border-beam {
+  position: absolute;
+  z-index: 5;
+  width: 260%;
+  height: 42%;
+  border-radius: 50%;
+  opacity: .72;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(.2px);
+  animation-duration: 5.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-delay: var(--star-delay, 0s);
+}
+
+.fan-site .star-border-top {
+  top: -20%;
+  left: -220%;
+  background: radial-gradient(ellipse at center, #fff 0 1%, #ff4055 3%, rgba(242,45,61,.52) 7%, transparent 15%);
+  animation-name: starImageTop;
+}
+
+.fan-site .star-border-bottom {
+  right: -220%;
+  bottom: -20%;
+  background: radial-gradient(ellipse at center, #fff 0 1%, #8be9ff 3%, rgba(242,45,61,.46) 7%, transparent 15%);
+  animation-name: starImageBottom;
+}
+
+.fan-site .star-image-border:hover::before {
+  border-color: rgba(242,45,61,.55);
+  box-shadow: inset 0 0 28px rgba(242,45,61,.08), 0 0 22px rgba(242,45,61,.12);
+}
+.fan-site .star-image-border:hover .star-border-beam { opacity: 1; animation-duration: 3.8s; }
+
+/* 卡片本身原有镭射层保持在星光边框之下，并继续响应悬停。 */
+.fan-site .fan-card-photo .fan-holo { z-index: 2; }
+.fan-site .fan-card-photo img,
+.fan-site .fan-meme-image img,
+.fan-site .fan-moment-image img,
+.fan-site .fan-photo-cell img,
+.fan-site .fan-profile-photo img { position: relative; z-index: 1; }
+.fan-site .fan-profile-photo > span,
+.fan-site .fan-moment-image .fan-slot-label,
+.fan-site .fan-moment-image .fan-moment-number,
+.fan-site .fan-meme-image small,
+.fan-site .fan-photo-cell > span,
+.fan-site .fan-photo-cell > i { z-index: 6; }
+
+/* 头像已有色彩叠层，移到星光边框之后，避免覆盖动画。 */
+.fan-site .fan-profile-photo::after { z-index: 2; }
+
+.fan-site .fan-footer-bottom {
+  grid-template-columns: 1fr auto;
+}
+.fan-site .fan-footer-bottom a:last-child { justify-self: end; }
+
+@keyframes starImageTop {
+  0% { transform: translateX(0); opacity: .15; }
+  12% { opacity: 1; }
+  100% { transform: translateX(122%); opacity: 0; }
+}
+@keyframes starImageBottom {
+  0% { transform: translateX(0); opacity: .15; }
+  12% { opacity: 1; }
+  100% { transform: translateX(-122%); opacity: 0; }
+}
+
+@media (max-width:760px) {
+  .fan-site .star-border-beam { animation-duration: 7s; opacity: .56; }
+  .fan-site .fan-footer-bottom { grid-template-columns: 1fr; }
+  .fan-site .fan-footer-bottom a:last-child { justify-self: start; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .fan-site .star-border-beam { animation: none; opacity: .26; }
+}
