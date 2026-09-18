@@ -39,6 +39,13 @@ export default function LuciferMotionApp() {
     const root = document.documentElement
     const body = document.body
     root.classList.add('agency-motion-enabled')
+    const openingFallback = window.setTimeout(() => {
+      body.classList.remove('opening-active')
+      gsap.set('.agency-opening', { display: 'none' })
+      gsap.set('.fan-topbar, .fan-hero h1, .fan-live-badge, .fan-hero-role, .fan-hero-bottom', {
+        clearProps: 'opacity,visibility,transform,clipPath',
+      })
+    }, 6500)
 
     const motion = gsap.matchMedia()
 
@@ -192,6 +199,7 @@ export default function LuciferMotionApp() {
     })
 
     return () => {
+      window.clearTimeout(openingFallback)
       motion.revert()
       root.classList.remove('agency-motion-enabled')
       body.classList.remove('opening-active')

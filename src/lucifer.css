@@ -1,5 +1,14 @@
 /* 首页视频位于人物名称之后；深色遮罩确保动态画面不干扰文字阅读。 */
-.fan-site .fan-hero-photo { display: none; }
+.fan-site .fan-hero-photo {
+  display: block;
+  inset: 0;
+}
+.fan-site .fan-hero-photo img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.82) brightness(.78);
+}
 .fan-site .fan-hero-video {
   position: absolute;
   z-index: 0;
@@ -9,8 +18,11 @@
   object-fit: cover;
   object-position: center;
   filter: saturate(.82) brightness(.78);
+  opacity: 0;
+  transition: opacity .7s ease;
   pointer-events: none;
 }
+.fan-site .fan-hero-video.is-ready { opacity: 1; }
 .fan-site .fan-hero-shade {
   z-index: 1;
   background: linear-gradient(90deg, rgba(4, 4, 5, .88), rgba(5, 5, 6, .55) 55%, rgba(20, 2, 5, .24)),
@@ -32,6 +44,7 @@
 @media (max-width: 760px) {
   .fan-site .fan-hero h1 { font-size: clamp(48px, 17vw, 110px); white-space: normal; }
   .fan-site .fan-hero-video { object-position: 60% center; }
+  .fan-site .fan-hero-photo img { object-position: 60% center; }
   .fan-site .fan-hero-shade { background: linear-gradient(0deg, #070707 0%, rgba(7,7,7,.4) 62%, rgba(7,7,7,.35)); }
   .fan-site .fan-hero-bottom p { font-size: clamp(22px, 5.2vw, 30px); }
 }

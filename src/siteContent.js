@@ -14,7 +14,7 @@ export const siteContent = {
     email: 'hello@lumifan.club',
     liveUrl: '#',
     avatar: '/images/lucifer-avatar.jpg',
-    heroImage: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=2200&q=90',
+    heroImage: '/images/hero-poster.webp',
     heroVideo: '/videos/hero.mp4',
   },
   moments: [

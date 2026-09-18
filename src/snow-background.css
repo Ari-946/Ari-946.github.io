@@ -17,6 +17,22 @@
   inset: 0;
   background: linear-gradient(90deg, rgba(7,7,7,.32), transparent 45%, rgba(7,7,7,.18));
 }
+.fan-site .fan-pixel-snow--light::before {
+  content: '';
+  position: absolute;
+  inset: -20% 0 0;
+  opacity: .55;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.8) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255,255,255,.48) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(242,45,61,.38) 0 1px, transparent 1.5px);
+  background-size: 72px 72px, 108px 108px, 154px 154px;
+  background-position: 5px 8px, 43px 28px, 84px 53px;
+  animation: fanLightSnow 18s linear infinite;
+}
+@keyframes fanLightSnow {
+  to { transform: translate3d(-22px, 15%, 0); }
+}
 
 .fan-site .fan-hero { z-index: 2; }
 .fan-site .fan-about,

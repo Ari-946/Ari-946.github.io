@@ -3,7 +3,7 @@ import { siteContent } from './siteContent.js'
 import './streamer.css'
 
 const Arrow = ({ size = 18 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" stroke="currentColor" strokeWidth="1.5" /></svg>
-const SmartImage = ({ src, alt }) => <img src={src} alt={alt} loading="lazy" onError={(e) => { e.currentTarget.style.opacity = '0'; e.currentTarget.parentElement?.classList.add('image-missing') }} />
+const SmartImage = ({ src, alt, priority = false }) => <img src={src} alt={alt} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'auto'} onError={(e) => { e.currentTarget.style.opacity = '0'; e.currentTarget.parentElement?.classList.add('image-missing') }} />
 
 export default function StreamerApp() {
   const { creator, moments, gallery, memes, cards } = siteContent
@@ -38,7 +38,7 @@ export default function StreamerApp() {
     </header>
 
     <section className="fan-hero" id="home">
-      <div className="fan-hero-photo"><SmartImage src={creator.heroImage} alt={`${creator.chineseName}首页照片`} /></div><div className="fan-hero-shade" /><div className="fan-hero-grid" />
+      <div className="fan-hero-photo"><SmartImage src={creator.heroImage} alt={`${creator.chineseName}首页照片`} priority /></div><div className="fan-hero-shade" /><div className="fan-hero-grid" />
       <div className="fan-hero-content fan-width"><div className="fan-live-badge"><i /> LIVE CREATOR / FAN SITE</div><h1>{creator.name}</h1><p className="fan-hero-role">{creator.role}</p><div className="fan-hero-bottom"><p>{creator.slogan.split('\n').map(line => <span key={line}>{line}</span>)}</p><a href="#moments">开始浏览 <span>↓</span></a></div></div>
       <div className="fan-hero-side">UNOFFICIAL FAN ARCHIVE · 2026</div>
     </section>

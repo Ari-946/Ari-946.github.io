@@ -9,21 +9,21 @@ siteContent.moments = [
     tag: 'GAME / HIGHLIGHT',
     title: '刘回杯清图丨\n遗憾出局',
     note: '“小角色也能站上大舞台”',
-    image: '/images/moments/01-liuhui-cup.png',
+    image: '/images/optimized/moments/01-liuhui-cup.webp',
   },
   {
     number: '02',
     tag: 'GAME / TOURNAMENT',
     title: '陈泽杯复活赛杀出重围丨\n剑折总决赛',
     note: '“四门该出一个天才了”',
-    image: '/images/moments/02-chenze-cup.png',
+    image: '/images/optimized/moments/02-chenze-cup.webp',
   },
   {
     number: '03',
     tag: 'GAME / TOURNAMENT',
     title: '白泽杯第一个天才少年丨\n憾负抢位赛',
     note: '“如果天赋不够，那就反复”',
-    image: '/images/moments/03-baize-cup.png',
+    image: '/images/optimized/moments/03-baize-cup.webp',
   },
 ]
 

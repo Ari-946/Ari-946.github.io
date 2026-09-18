@@ -4,10 +4,10 @@ import { siteContent } from './siteContent.js'
 
 // 只替换收藏卡图片与文字，原有卡片结构和镭射效果保持不变。
 siteContent.cards = [
-  { id: 'NO. 001', rarity: 'SSR', title: '四门第一剑', subtitle: '', image: '/images/cards/01-first-sword.jpg' },
-  { id: 'NO. 017', rarity: 'SR', title: '红头发小哥哥', subtitle: '', image: '/images/cards/02-red-hair.jpg' },
-  { id: 'NO. 026', rarity: 'UR', title: '舞学奇才', subtitle: '', image: '/images/cards/03-dance-genius.jpg' },
-  { id: 'NO. 052', rarity: 'R', title: '路观限定', subtitle: '', image: '/images/cards/04-limited.jpg' },
+  { id: 'NO. 001', rarity: 'SSR', title: '四门第一剑', subtitle: '', image: '/images/optimized/cards/01-first-sword.webp' },
+  { id: 'NO. 017', rarity: 'SR', title: '红头发小哥哥', subtitle: '', image: '/images/optimized/cards/02-red-hair.webp' },
+  { id: 'NO. 026', rarity: 'UR', title: '舞学奇才', subtitle: '', image: '/images/optimized/cards/03-dance-genius.webp' },
+  { id: 'NO. 052', rarity: 'R', title: '路观限定', subtitle: '', image: '/images/optimized/cards/04-limited.webp' },
 ]
 
 export default function LuciferCardsApp() {

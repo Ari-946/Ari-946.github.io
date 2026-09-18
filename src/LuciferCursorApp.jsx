@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import LuciferSnowApp from './LuciferSnowApp.jsx'
-import GlowCursor from './GlowCursor.jsx'
+
+const GlowCursor = lazy(() => import('./GlowCursor.jsx'))
 
 const sections = [
   { selector: '#about', number: '01', label: 'ABOUT / CREATOR' },
@@ -11,7 +12,14 @@ const sections = [
 ]
 
 export default function LuciferCursorApp() {
+  const [showCursor, setShowCursor] = useState(false)
+
   useEffect(() => {
+    const cursorQuery = window.matchMedia('(pointer: fine) and (min-width: 761px)')
+    const updateCursor = () => setShowCursor(cursorQuery.matches)
+    updateCursor()
+    cursorQuery.addEventListener?.('change', updateCursor)
+
     const frame = requestAnimationFrame(() => {
       const gallery = document.querySelector('.fan-gallery')
       if (gallery) gallery.id = 'gallery'
@@ -51,12 +59,15 @@ export default function LuciferCursorApp() {
         })
       }
     })
-    return () => cancelAnimationFrame(frame)
+    return () => {
+      cancelAnimationFrame(frame)
+      cursorQuery.removeEventListener?.('change', updateCursor)
+    }
   }, [])
 
   return <>
     <LuciferSnowApp />
-    <GlowCursor
+    {showCursor && <Suspense fallback={null}><GlowCursor
       color="#ff304a"
       secondaryColor="#67e8f9"
       trailLength={30}
@@ -72,6 +83,6 @@ export default function LuciferCursorApp() {
       noiseStrength={0.035}
       idleTimeout={700}
       fadeDuration={900}
-    />
+    /></Suspense>}
   </>
 }

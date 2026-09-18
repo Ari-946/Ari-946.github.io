@@ -3,12 +3,12 @@ import LuciferFinalContentApp from './LuciferFinalContentApp.jsx'
 import { siteContent } from './siteContent.js'
 
 siteContent.gallery = [
-  '/images/gallery/01-car.png',
-  '/images/gallery/02-rose.png',
-  '/images/gallery/03-sword.png',
-  '/images/gallery/04-sunglasses.png',
-  '/images/gallery/05-rain.png',
-  '/images/gallery/06-cyber.png',
+  '/images/optimized/gallery/01-car.webp',
+  '/images/optimized/gallery/02-rose.webp',
+  '/images/optimized/gallery/03-sword.webp',
+  '/images/optimized/gallery/04-sunglasses.webp',
+  '/images/optimized/gallery/05-rain.webp',
+  '/images/optimized/gallery/06-cyber.webp',
 ]
 
 export default function LuciferGalleryApp() {

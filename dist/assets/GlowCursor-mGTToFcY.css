@@ -1,0 +1,1 @@
+.global-glow-cursor{z-index:9999;pointer-events:none;-webkit-user-select:none;user-select:none;mix-blend-mode:screen;width:100vw;height:100vh;display:block;position:fixed;inset:0}@media (pointer:fine){.fan-site,.fan-site a,.fan-site button{cursor:none!important}}@media (pointer:coarse),(prefers-reduced-motion:reduce){.global-glow-cursor{display:none}}
